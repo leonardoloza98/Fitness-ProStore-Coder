@@ -1,0 +1,11 @@
+.itemlist-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.saludar{
+    font-style: italic;
+    font-size: 45px;
+}
