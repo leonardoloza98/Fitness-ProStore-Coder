@@ -1,0 +1,29 @@
+.about-container{
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    height: 88.3vh;
+    background-image: url('../../Images/About.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.title{
+    font-family:bold Georgia, 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    text-align: center;
+    background-color: darkgrey;
+    opacity: 85%;
+    margin-bottom: 0px;
+    padding: 15px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.parrafo{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color: darkgrey;
+    opacity: 85%;
+    margin-top: 0px;
+    padding: 15px;
+    border-radius: 0px 0px 5px 5px;
+}

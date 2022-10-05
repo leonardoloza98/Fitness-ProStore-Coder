@@ -1,0 +1,62 @@
+.card-item{
+    width: 250px;
+    height: 350px;
+    border-radius: 5px;
+    background-color: gray;
+    margin: 40px;
+    opacity: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-item:hover{
+    cursor: pointer;
+}
+
+.div-title{
+    font-family: Helvetica;
+    font-weight: 550;
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.items-cointainer{
+    display: flex;
+    min-width: 250px;
+    flex-wrap: wrap;
+}
+
+.item-imagen{
+    height: 60%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    width: 220px;
+    border: 1px solid black;
+}
+
+.item-name{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.item-description{
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 5px;
+}
+
+.item-price{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+}

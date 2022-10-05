@@ -1,8 +1,11 @@
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Item } from '../Item/Item';
+import './ItemDetailContainer.css';
 
-import './ItemListConainer.css';
+export const ItemDetailContainer = () => {
+    const params = useParams();
 
-export const ItemListContainer = () => {
     const listaDeProductos = [
         {
             id: 1,
@@ -34,16 +37,14 @@ export const ItemListContainer = () => {
         },
     ]
 
-    return(
-        <div className='itemlist-container'>
+    const producto = listaDeProductos.find(producto=>producto.id == params.id)
+
+    return (
+        <div className='item-detail-container'>            
             <div className='div-title'>
-                <span>Nuestros productos</span>
+                <span>Detalle de producto</span>
             </div>
-            <div className='items-cointainer'>
-                {listaDeProductos.map((producto) => {
-                    return <Item producto={producto}/>
-                })}
-            </div>
+            <Item producto={producto}/>
         </div>
     )
 }

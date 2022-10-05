@@ -5,13 +5,15 @@
     height: 50px;
     align-items: center;
     color: whitesmoke;
-    padding: 5px
+    padding: 5px 15px;
 }
 
 .logo{
     font-size: bold 20px;
 }
-
+.logo:hover{
+    cursor: pointer;
+}
 .bar-buttons{
     display: flex;
     flex-grow: 1;
@@ -22,6 +24,7 @@
     background-color: rgb(55, 51, 51);
     color: whitesmoke;
     border: none;
+    margin-left:10px;
 }
 
 .button:hover{
