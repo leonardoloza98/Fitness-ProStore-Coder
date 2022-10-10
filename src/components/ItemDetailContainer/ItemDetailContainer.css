@@ -13,3 +13,44 @@
     font-family: Helvetica;
     font-size: 30px;
 }
+
+.div-contador{
+    display: flex;
+    align-items: center;
+    background-color: gray;
+    border-radius: 10px;
+    margin-top: -35px
+}
+
+.span-contador{
+    margin: 15px;
+    font-weight: bold;
+}
+
+.button-contador{
+    padding: 10px;
+    font-family: Helvetica;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: grey;
+    font-weight: bold;
+    height: 100%;
+}
+
+.button-contador:hover{
+    cursor: pointer;
+}
+
+.button-agregar{
+    background-color: rgb(29, 97, 29);
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 15px;
+    font-weight: bold;
+    border: none
+}
+
+.button-agregar:hover{
+    cursor: pointer;
+}

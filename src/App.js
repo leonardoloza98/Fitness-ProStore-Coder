@@ -1,22 +1,63 @@
 import './App.css';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar/Navbar';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
+import { ResumeCart } from './components/ResumeCart/ResumeCart';
 import { About } from './components/About/About';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+export const AppContext = React.createContext();
+
 function App() {
+  const [cart, setCart] = useState([]);
+
+  useEffect(()=>{
+    console.log("Cambio el carrito: ", cart)
+  }, [cart])
+
+  const addProductToCart = (product) => {
+    const existProduct = cart.find(producto => producto.id = product.id)
+    if(existProduct){
+      const products =  cart.filter(producto => producto.id !== product.id)
+      setCart([
+        ...products,
+        {
+          ...product,
+          unidades: product.unidades + existProduct.unidades
+        }
+      ])
+    }else{
+      setCart(
+        [
+          ...cart,
+          product
+        ]
+      )
+    }
+  }
+
+  const removeProductToCart = (product) => {
+    const cartRemove = cart.filter(producto => producto.id !== product.id)
+    setCart(
+      [...cartRemove]
+    )
+  }
+
   return (
-    <BrowserRouter>
-      <Navbar></Navbar>
-      <Routes>
-          <Route exact path='/about' element={<About/>}/>
-          <Route exact path='/productos' element={<ItemListContainer/>}/>
-          <Route exact path='/category/:id' element={<ItemListContainer/>}/>
-          <Route exact path='/productos/:id' element={<ItemDetailContainer/>}/>
-          <Route path='/' element={<About/>}/>
-      </Routes>
-    </BrowserRouter>
+    <AppContext.Provider value={{cart, addProductToCart, removeProductToCart}}>
+      <BrowserRouter>
+        <Navbar></Navbar>
+        <Routes>
+            <Route exact path='/about' element={<About/>}/>
+            <Route exact path='/productos' element={<ItemListContainer/>}/>
+            <Route exact path='/category/:id' element={<ItemListContainer/>}/>
+            <Route exact path='/productos/:id' element={<ItemDetailContainer/>}/>
+            <Route exact path='/carrito' element={<ResumeCart/>}/>
+            <Route path='/' element={<About/>}/>
+        </Routes>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 

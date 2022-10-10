@@ -20,7 +20,7 @@ export const Navbar = () => {
                 <Link to={'/productos'}>
                     <button className='button'>Productos</button>
                 </Link>
-                <Link>
+                <Link to={'/carrito'}>
                     <button className='button'>
                         <CartWidget/>
                     </button>

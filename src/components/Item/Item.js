@@ -12,7 +12,7 @@ export const Item = ({producto}) => {
     return(
         <div className='card-item' onClick={()=>handleOnClickItem(producto.id)}>
             <div className='item-imagen'>
-                <img src={ProteinaImg}></img>
+                <img src={ProteinaImg} alt={""}></img>
             </div>
             <div className='item-name'>
                 {producto.name}
@@ -21,7 +21,7 @@ export const Item = ({producto}) => {
                 {producto.description}
             </div>
             <div className='item-price'>
-                {producto.price}
+                ${producto.price}
             </div>
         </div>
     )
