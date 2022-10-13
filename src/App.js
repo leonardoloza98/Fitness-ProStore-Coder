@@ -12,10 +12,6 @@ export const AppContext = React.createContext();
 function App() {
   const [cart, setCart] = useState([]);
 
-  useEffect(()=>{
-    console.log("Cambio el carrito: ", cart)
-  }, [cart])
-
   const addProductToCart = (product) => {
     const existProduct = cart.find(producto => producto.id = product.id)
     if(existProduct){

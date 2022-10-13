@@ -1,9 +1,7 @@
 .about-container{
-    padding-top: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
-    height: 88.3vh;
-    background-image: url('../../Images/About.jpg');
+    position: absolute;
+    height: calc(100vh - 60px);
+    background: url('../../Images/About.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -13,8 +11,9 @@
     text-align: center;
     background-color: darkgrey;
     opacity: 85%;
-    margin-bottom: 0px;
-    padding: 15px;
+    margin-bottom: 0;
+    margin-left:15px;
+    margin-right: 15px;
     border-radius: 5px 5px 0px 0px;
 }
 
@@ -24,6 +23,8 @@
     background-color: darkgrey;
     opacity: 85%;
     margin-top: 0px;
-    padding: 15px;
+    margin-left:15px;
+    margin-right: 15px;
+    padding: 20px;
     border-radius: 0px 0px 5px 5px;
 }

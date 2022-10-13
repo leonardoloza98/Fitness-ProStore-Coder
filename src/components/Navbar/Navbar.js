@@ -20,6 +20,12 @@ export const Navbar = () => {
                 <Link to={'/productos'}>
                     <button className='button'>Productos</button>
                 </Link>
+                <Link to={'/category/1'}>
+                    <button className='button'>Suplementos</button>
+                </Link>
+                <Link to={'/category/2'}>
+                    <button className='button'>Elementos</button>
+                </Link>
                 <Link to={'/carrito'}>
                     <button className='button'>
                         <CartWidget/>

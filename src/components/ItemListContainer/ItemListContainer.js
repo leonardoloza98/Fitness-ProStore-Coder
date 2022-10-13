@@ -1,16 +1,25 @@
 import { Item } from '../Item/Item';
-import { getProducts } from '../../asyncMock';
+import { getProducts, getProductsByCategory } from '../../asyncMock';
 import './ItemListConainer.css';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const ItemListContainer = () => {
     const [products, setProducts] = useState([])
+    const {id} = useParams()
+    
 
     useEffect(()=>{
-        getProducts().then(res=>{
-            setProducts(res)
-        }).catch(error=>console.log(error))
-    })
+        if(id){
+            getProductsByCategory(id).then(res=>{
+                setProducts(res)
+            }).catch(error=>console.log(error))
+        }else{
+            getProducts().then(res=>{
+                setProducts(res)
+            }).catch(error=>console.log(error))
+        }
+    },[id])
 
     const items = products?.map((producto) => {
         return <Item key={producto.id} producto={producto}/>

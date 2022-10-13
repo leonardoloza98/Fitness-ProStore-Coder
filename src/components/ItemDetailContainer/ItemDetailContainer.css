@@ -1,12 +1,11 @@
 .item-detail-container{
-    height: 88.3vh;
+    height: calc(100vh - 60px);
     background-image: url('../../Images/Productos.jpg');
     background-repeat: cover;
     display: flex;
     justify-content: start;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
 }
 
 .title-detail{

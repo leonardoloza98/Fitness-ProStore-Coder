@@ -4,28 +4,32 @@ const listaDeProductos = [
         name: 'Proteína',
         description: 'Proteina al 80%',
         price: 4500,
-        img: '../../Images/Proteina.png'
+        img: '../../Images/Proteina.png',
+        category: 1
     },
     {
         id: 2,
         name: 'Creatina',
         description: 'Creatina isolada',
         price: 6500,
-        img: '../../Images/Proteina.png'
+        img: '../../Images/Proteina.png',
+        category: 1
     },
     {
         id: 3,
-        name: 'Colágeno',
-        description: 'Con acido hialunorico',
-        price: 4000,
-        img: '../../Images/Proteina.png'
-    },
-    {
-        id: 4,
         name: 'Mancuernas',
         description: 'Mancuernas de 10kg',
         price: 8500,
-        img: '../../Images/Proteina.png'
+        img: '../../Images/Proteina.png',
+        category: 2
+    },    
+    {
+        id: 4,
+        name: 'Soga',
+        description: 'Soga de 2 metros',
+        price: 2200,
+        img: '../../Images/Proteina.png',
+        category: 2
     },
 ]
 
@@ -34,6 +38,21 @@ export const getProducts = () => {
         try{
             setTimeout(()=>{
                 resolve(listaDeProductos)
+            }, 200)
+        }catch(error){
+            reject(error)
+        }
+    })
+}
+
+export const getProductsByCategory = (id) => {
+    return new Promise((resolve, reject)=>{
+        try{
+            setTimeout(()=>{
+                console.log(id)
+                const listaDeProductosByCategory = listaDeProductos.filter(producto=>producto.category===Number(id))
+                console.log("lista: ", listaDeProductosByCategory)
+                resolve(listaDeProductosByCategory)
             }, 200)
         }catch(error){
             reject(error)
