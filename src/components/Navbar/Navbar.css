@@ -30,3 +30,26 @@
 .button:hover{
     cursor: pointer;
 }
+.cart-container{
+    display: flex;
+    align-items: center;
+}
+.counter-cart{
+    height: 15px;
+    width: 15px;
+    background-color: red;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-cart{
+    color: white;
+    font-size: 12px;
+    line-height: 20px;
+}   
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}

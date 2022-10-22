@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AppContext } from "../../App";
-import ProteinaImg from '../../Images/Proteina.png';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './ResumeCart.css';
 
@@ -14,7 +13,7 @@ export const ResumeCart = () => {
     const ItemCardResume = ({producto}) => {
         return(
             <div className='div-resume-item'>
-                <div className='div-image-resume'><img src={ProteinaImg} alt=''></img></div>
+                <div className='div-image-resume'><img src={producto.img} alt=''></img></div>
                 <div className='div-name-resume'>{producto.name}</div>
                 <div className='div-name-resume'>{producto.description}</div>
                 <div className='div-unidades-resume'>{producto.unidades} unid.</div>
@@ -33,11 +32,17 @@ export const ResumeCart = () => {
             <span className='div-title'>
                 Resumen de compra
             </span>
+            {cart.length !== 0 ? 
             <div>
                 {cart.map(producto=>{
                     return <ItemCardResume producto={producto}/>
                 })}
             </div>
+            :
+            <div style={{paddingTop:'30px', textAlign:'center', fontWeight: 'bold'}}>
+                Aún no tienes nada agregado al carrito
+            </div>       
+            }
         </div>
     )
 }

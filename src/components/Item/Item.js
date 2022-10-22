@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ProteinaImg from '../../Images/Proteina.png';
 import './Item.css';
 
 export const Item = ({producto}) => {
@@ -12,7 +11,7 @@ export const Item = ({producto}) => {
     return(
         <div className='card-item' onClick={()=>handleOnClickItem(producto.id)}>
             <div className='item-imagen'>
-                <img src={ProteinaImg} alt={""}></img>
+                <img src={producto.img} alt={""}></img>
             </div>
             <div className='item-name'>
                 {producto.name}

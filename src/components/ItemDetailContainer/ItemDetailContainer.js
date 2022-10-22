@@ -1,28 +1,29 @@
-import React, { useContext, useState } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { getProducts } from '../../asyncMock';
 import { Item } from '../Item/Item';
 import { AppContext } from '../../App';
+import { doc, getDoc} from 'firebase/firestore';
+import { db } from '../../services/firebase/index';
 import './ItemDetailContainer.css';
 
 export const ItemDetailContainer = () => {
     const [producto, setProducto] = useState({})
     const [unidades, setUnidades] = useState(0)
-    const params = useParams();
+    const {id} = useParams();
     
     const {addProductToCart} = useContext(AppContext)
 
     useEffect(()=>{
-        getProducts().then(productos=>{
-            try{
-                const product = productos.filter(producto => Number(producto.id)===Number(params.id))
-                setProducto(product[0])
-            }catch(error){
-                console.log(error)
+        const docRef = doc(db, "listaDeProductos", id);
+        getDoc(docRef).then(res=>{
+            const data = res.data()
+            const producto = {
+                id: res.id,
+                ...data
             }
-        })
-    })
+            setProducto(producto)
+        });
+    }, [id])
     
     const handleAdd = () => {
         setUnidades(unidades+1)

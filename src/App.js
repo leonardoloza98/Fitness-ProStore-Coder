@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar/Navbar';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
@@ -13,24 +13,25 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const addProductToCart = (product) => {
-    const existProduct = cart.find(producto => producto.id = product.id)
-    if(existProduct){
-      const products =  cart.filter(producto => producto.id !== product.id)
-      setCart([
-        ...products,
-        {
-          ...product,
-          unidades: product.unidades + existProduct.unidades
-        }
-      ])
-    }else{
-      setCart(
-        [
-          ...cart,
-          product
-        ]
-      )
-    }
+      const existProduct = cart.find(producto => producto.name===product.name)
+      if(existProduct){
+        const productsDistinctName = cart.filter(producto => producto.name!==product.name)
+        console.log(productsDistinctName)
+        setCart([
+          ...productsDistinctName,
+          {
+            ...product,
+            unidades: product.unidades + existProduct.unidades
+          }
+        ])
+      }else{
+        setCart(
+          [
+            ...cart,
+            {...product}
+          ]
+        )
+      }
   }
 
   const removeProductToCart = (product) => {
