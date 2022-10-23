@@ -22,7 +22,7 @@ export const Checkout = () => {
         const collectionRef = collection(db, 'orders')
 
         addDoc(collectionRef, objForm).then(()=>{
-            toast.success('Formulario enviado correctamente.',  {
+            toast.success('Orden enviada correctamente.',  {
                 position: toast.POSITION.TOP_RIGHT
             })
         })

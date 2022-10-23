@@ -4,7 +4,9 @@ import { Item } from '../Item/Item';
 import { AppContext } from '../../App';
 import { doc, getDoc} from 'firebase/firestore';
 import { db } from '../../services/firebase/index';
+import { ToastContainer, toast } from 'react-toastify';
 import './ItemDetailContainer.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ItemDetailContainer = () => {
     const [producto, setProducto] = useState({})
@@ -34,7 +36,11 @@ export const ItemDetailContainer = () => {
     }
 
     const handleAddProduct = () => {
-        addProductToCart({...producto, unidades})
+        addProductToCart({...producto, unidades}).then(()=>{
+            toast.success('Producto agregado correctamente.')
+        }).catch(error=>{
+            toast.error('No se pudo agregar el producto.')
+        })
     }
 
     return (
@@ -53,6 +59,7 @@ export const ItemDetailContainer = () => {
                     AGREGAR    
                 </button>
             </div>
+            <ToastContainer/>
         </div>
     )
 }

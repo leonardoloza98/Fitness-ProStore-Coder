@@ -14,24 +14,31 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const addProductToCart = (product) => {
-      const existProduct = cart.find(producto => producto.name===product.name)
-      if(existProduct){
-        const productsDistinctName = cart.filter(producto => producto.name!==product.name)
-        setCart([
-          ...productsDistinctName,
-          {
-            ...product,
-            unidades: product.unidades + existProduct.unidades
-          }
-        ])
-      }else{
-        setCart(
-          [
-            ...cart,
-            {...product}
-          ]
-        )
+    return new Promise((resolve, reject)=>{
+      try{
+        const existProduct = cart.find(producto => producto.name===product.name)
+        if(existProduct){
+          const productsDistinctName = cart.filter(producto => producto.name!==product.name)
+          setCart([
+            ...productsDistinctName,
+            {
+              ...product,
+              unidades: product.unidades + existProduct.unidades
+            }
+          ])
+        }else{
+          setCart(
+            [
+              ...cart,
+              {...product}
+            ]
+          )
+        }
+        resolve(true)
+      }catch (error){
+        reject(error)
       }
+    })
   }
 
   const removeProductToCart = (product) => {
