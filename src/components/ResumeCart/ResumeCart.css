@@ -1,6 +1,6 @@
 .resume-container{
     height: calc(100vh - 60px);
-    background-image: url('../../Images/Productos.jpg');
+    background-image: linear-gradient(195deg, #61716c 0, #546c67 12.5%, #466662 25%, #35605d 37.5%, #1f5959 50%, #005256 62.5%, #004b54 75%, #004553 87.5%, #003f52 100%);
     background-repeat: cover;
     display: flex;
     justify-content: start;
@@ -30,6 +30,11 @@
     margin-bottom: 25px;
     width: 70px;
     border: 1px solid black;
+    border-radius: 15px;
+}
+
+.imagen-resumen{
+    border-radius: 15px;
 }
 
 .div-name-resume{
@@ -54,4 +59,29 @@
 
 .button-delete:hover{
     cursor: pointer;
+}
+
+.icon-delete:hover{
+    color: rgb(46, 45, 45);
+}
+
+.div-button-agregar-resumen{
+    width: 100%; 
+    display: flex;
+    justify-content: center;  
+}
+
+.button-agregar-resumen{
+    background-color: rgb(29, 97, 29);
+    width: 20%;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 15px;
+    font-weight: bold;
+    border: none
+}
+
+.button-agregar-resumen:hover{
+    cursor: pointer;
+    background-color: rgb(25, 139, 25);
 }

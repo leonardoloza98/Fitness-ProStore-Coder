@@ -49,7 +49,7 @@ export const ItemDetailContainer = () => {
                 <button className='button-contador' onClick={handleAdd}>+</button>
             </div>
             <div className='div-button-agregar'>
-                <button className='button-agregar' onClick={handleAddProduct} disabled={unidades===0}>
+                <button className={unidades===0 ? 'button-disabled' : 'button-agregar'} onClick={handleAddProduct} disabled={unidades===0}>
                     AGREGAR    
                 </button>
             </div>

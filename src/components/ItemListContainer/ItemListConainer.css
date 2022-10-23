@@ -1,7 +1,7 @@
 .itemlist-container{
     height: calc(100vh - 60px);
     width: 100%;
-    background-image: url('../../Images/Productos.jpg');
+    background-image: linear-gradient(195deg, #61716c 0, #546c67 12.5%, #466662 25%, #35605d 37.5%, #1f5959 50%, #005256 62.5%, #004b54 75%, #004553 87.5%, #003f52 100%);
     background-size: cover;
     background-position: center center;
     display: flex;

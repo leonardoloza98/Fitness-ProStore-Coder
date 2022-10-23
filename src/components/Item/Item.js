@@ -11,7 +11,7 @@ export const Item = ({producto}) => {
     return(
         <div className='card-item' onClick={()=>handleOnClickItem(producto.id)}>
             <div className='item-imagen'>
-                <img src={producto.img} alt={""}></img>
+                <img className='item-imagen-control' src={producto.img} alt={""}></img>
             </div>
             <div className='item-name'>
                 {producto.name}

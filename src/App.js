@@ -5,6 +5,7 @@ import { ItemListContainer } from './components/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import { ResumeCart } from './components/ResumeCart/ResumeCart';
 import { About } from './components/About/About';
+import { Checkout } from './components/Checkout/Checkout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export const AppContext = React.createContext();
@@ -16,7 +17,6 @@ function App() {
       const existProduct = cart.find(producto => producto.name===product.name)
       if(existProduct){
         const productsDistinctName = cart.filter(producto => producto.name!==product.name)
-        console.log(productsDistinctName)
         setCart([
           ...productsDistinctName,
           {
@@ -52,6 +52,8 @@ function App() {
             <Route exact path='/productos/:id' element={<ItemDetailContainer/>}/>
             <Route exact path='/carrito' element={<ResumeCart/>}/>
             <Route path='/' element={<About/>}/>
+            <Route path='/checkout' element={<Checkout/>}/>
+            <Route path='*' element={<h1>404 NOT FOUND</h1>}/>
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>

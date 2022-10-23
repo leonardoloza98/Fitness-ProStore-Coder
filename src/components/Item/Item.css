@@ -35,6 +35,11 @@
     margin-bottom: 25px;
     width: 220px;
     border: 1px solid black;
+    border-radius: 10px;
+}
+
+.item-imagen-control{
+    border-radius: 10px;
 }
 
 .item-name{
