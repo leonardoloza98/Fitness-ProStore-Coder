@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Formik } from "formik";
 import { AppContext } from '../../App';
 import * as Yup from "yup";
-import { collection, addDoc} from 'firebase/firestore';
+import { collection, getDocs, addDoc, where, query, documentId, writeBatch} from 'firebase/firestore';
 import { db } from '../../services/firebase/index';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { ToastContainer, toast } from 'react-toastify';
@@ -14,18 +14,59 @@ export const Checkout = () => {
     const {cart} = useContext(AppContext)
 
     const handleSubmitForm = async(values) => {
-        const objForm = {
-            ...values,
-            items: cart
-        }
-
-        const collectionRef = collection(db, 'orders')
-
-        addDoc(collectionRef, objForm).then(()=>{
-            toast.success('Orden enviada correctamente.',  {
+        try{
+            const objForm = {
+                ...values,
+                items: cart
+            }
+    
+            const ids = cart.map(item=>{
+                return item.id
+            })
+    
+            const productRef = collection(db, 'listaDeProductos')
+    
+            const productsFromFirestore = await getDocs(query(productRef, where(documentId(),'in', ids)))
+    
+            const { docs } = productsFromFirestore
+    
+            const batch = writeBatch(db)
+            const outOfStock = []
+    
+            docs.forEach(doc => {
+                const dataDoc = doc.data()
+                const stockDb = dataDoc.stockDb
+    
+                const productaddedToCart = cart.find(prod => prod.id===doc.id)
+                const prodQuantity = productaddedToCart?.unidades
+    
+                if(stockDb >= prodQuantity){
+                    batch.update(doc.ref, {stock: stockDb-prodQuantity})
+                }else{
+                    outOfStock.push({id: doc.id, ...dataDoc})
+                }
+            })
+    
+            if(outOfStock.length === 0){
+                await batch.commit()
+                const orderRef = collection(db, 'orders')
+    
+                const orderAdded = await addDoc(orderRef, objForm)
+                toast.success('Orden enviada correctamente.',  {
+                    position: toast.POSITION.TOP_RIGHT
+                })
+    
+                console.log('El id de su order es ', orderAdded.id)
+            }else{
+                toast.error('Hay productos fuera de stock.',  {
+                    position: toast.POSITION.TOP_RIGHT
+                })
+            }
+        }catch(error){
+            toast.error('No es posible generar la orden.',  {
                 position: toast.POSITION.TOP_RIGHT
             })
-        })
+        }
     }
 
     return (

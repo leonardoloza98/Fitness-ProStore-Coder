@@ -7,7 +7,11 @@ import './ResumeCart.css';
 export const ResumeCart = () => {   
     const {cart, removeProductToCart} = useContext(AppContext);
     const navigate = useNavigate();
-    
+    let total = 0;
+    cart.forEach(producto => {
+        const subtotal = producto.price * producto.unidades
+        total+=subtotal
+    });
     const handleRemoveProduct = (producto) => {
         removeProductToCart(producto)
     }
@@ -42,6 +46,7 @@ export const ResumeCart = () => {
                 {cart.map(producto=>{
                     return <ItemCardResume producto={producto}/>
                 })}
+                <span style={{display:'block', textAlign: 'center', fontWeight:'bold', padding: '10px'}}> TOTAL: ${total}</span>
                 <div className='div-button-agregar-resumen'>
                     <button className='button-agregar-resumen' onClick={handleOnClickCheckout}>
                         CHECKOUT    
